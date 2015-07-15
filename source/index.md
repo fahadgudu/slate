@@ -2,13 +2,11 @@
 title: API Reference
 
 language_tabs:
-  - shell
-  - ruby
-  - python
+  - HTTP Request
 
 toc_footers:
   - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='http://github.com/tripit/slate'>Documentation Powered by Slate</a>
+  - <a href='http://github.com/fahadgudu/slate'>Documentation by Fahad</a>
 
 includes:
   - errors
@@ -18,151 +16,647 @@ search: true
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Welcome to the X Operative Tab API! You can use our API to access X Operative Tab endpoints, which can get information on various projects, systems, and test in our database.
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
-
-This example API documentation page was created with [Slate](http://github.com/tripit/slate). Feel free to edit it and use it as a base for your own API's documentation.
 
 # Authentication
+## Sign in
+> To authorize, use this URL  :
+>  localhost:3000/api/signin
 
-> To authorize, use this code:
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
+`POST localhost:3000/api/signin`
 
 ```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+curl "localhost:3000/api/signin"
+  -H "Content-Type : application/json && Accept : application/vnd.example.v1"
 ```
-
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
-
-<aside class="notice">
-You must replace `meowmeowmeow` with your personal API key.
-</aside>
-
-# Kittens
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
 > The above command returns JSON structured like this:
 
 ```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Isis",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
+{
+    "email": "hamilton@gmail.com",
+    "authentication_token": "nLKSTVuSKmrxUezuWirF",
+    "created_at": "2015-07-02T07:50:01.168Z",
+    "updated_at": "2015-07-08T05:10:23.770Z",
+    "company_id": 6,
+    "timestamp": 1436332223.777125
+}
 ```
 
-This endpoint retrieves all kittens.
+This endpoint Sign in user to AWS server.
+
+## Sign out
+
+> To Logout, use this URL  :
+>  localhost:3000/api/signout?auth_token=wCtXRyxhYk7HTdZpM8eC
+
+`DELETE localhost:3000/api/signout?auth_token=wCtXRyxhYk7HTdZpM8eC`
+
+```shell
+curl "localhost:3000/api/signout?auth_token=wCtXRyxhYk7HTdZpM8eC"
+  -H "Content-Type : application/json && Accept : application/vnd.example.v1"
+```
+> The above command returns JSON structured like this:
+
+```json
+{
+    "email": "fahad@gmail.com",
+    "authentication_token": "wCtXRyxhYk7HTdZpM8eC",
+    "created_at": "2015-06-11T09:59:13.923Z",
+    "updated_at": "2015-07-07T07:48:44.615Z",
+    "company_id": 1
+}
+
+```
+This endpoint Sign out user to AWS server.
+
+# Projects
 
 ### HTTP Request
 
-`GET http://example.com/kittens`
+`POST localhost:3000/api/projects.json?auth_token=kDKUhhkg_pkEYQhzXkbH`
 
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
+## Create Project
 
 ```shell
-curl "http://example.com/api/kittens/3"
-  -H "Authorization: meowmeowmeow"
+curl "localhost:3000/api/projects.json?auth_token=kDKUhhkg_pkEYQhzXkbH"
+  -H "Content-Type : application/json && Accept : application/vnd.example.v1"
+```
+
+  > Request Json
+
+```json
+{
+  "project":{
+    "name": "Name is khan",
+    "status": "active",
+    "location": "Sydney"
+  }
+}
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "id": 2,
-  "name": "Isis",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+    "id": 14,
+    "name": "Name is khan",
+    "status": "active",
+    "location": "Sydney",
+    "created_at": 1436255994,
+    "updated_at": 1436255994
 }
+
 ```
-
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">If you're not using an administrator API key, note that some kittens will return 403 Forbidden if they are hidden for admins only.</aside>
 
 ### HTTP Request
 
-`GET http://example.com/kittens/<ID>`
+`POST localhost:3000/api/projects.json?auth_token=kDKUhhkg_pkEYQhzXkbH`
 
-### URL Parameters
+## Update Project
 
-Parameter | Description
---------- | -----------
-ID | The ID of the cat to retrieve
+`PUT localhost:3000/api/projects.json?auth_token=kDKUhhkg_pkEYQhzXkbH`
+
+```shell
+curl "localhost:3000/api/projects.json?auth_token=kDKUhhkg_pkEYQhzXkbH"
+  -H "Content-Type : application/json && Accept : application/vnd.example.v1"
+```
+
+  > Request Json
+
+```json
+{
+  "project":{
+    "id": 14,
+    "name": "TEST Project",
+    "status": "active",
+    "location": "Sydney"
+  }
+}
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "id": 14,
+    "name": "TEST Project",
+    "status": "active",
+    "location": "Sydney",
+    "created_at": 1436255994,
+    "updated_at": 1436255994
+}
+
+```
+## Get All the Projects
+
+```shell
+curl "localhost:3000/api/projects.json?auth_token=kDKUhhkg_pkEYQhzXkbH"
+  -H "Content-Type : application/json && Accept : application/vnd.example.v1"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+    {
+        "id": 10,
+        "name": "Name is khan",
+        "status": "active",
+        "location": "Sydney",
+        "updated_at": 1436177134
+    },
+    {
+        "id": 12,
+        "name": "Name is khan",
+        "status": "active",
+        "location": "Sydney",
+        "updated_at": 1436177479
+    },
+    {
+        "id": 11,
+        "name": "fahad what happen to me",
+        "status": "active",
+        "location": "lahore",
+        "updated_at": 1436177899
+    },
+    {
+        "id": 13,
+        "name": "Name is khan",
+        "status": "active",
+        "location": "Sydney",
+        "updated_at": 1436178149
+    },
+    {
+        "id": 14,
+        "name": "Name is khan",
+        "status": "active",
+        "location": "Sydney",
+        "updated_at": 1436255994
+    }
+]
+```
+
+### HTTP Request
+
+`GET localhost:3000/api/projects/11.json?auth_token=kDKUhhkg_pkEYQhzXkbH`
+
+
+### HTTP Request
+
+`GET localhost:3000/api/projects/12.json?auth_token=kDKUhhkg_pkEYQhzXkbH`
+
+## Update Project
+
+`GET localhost:3000/api/projects/12.json?auth_token=kDKUhhkg_pkEYQhzXkbH`
+
+```shell
+curl "localhost:3000/api/projects/12.json?auth_token=kDKUhhkg_pkEYQhzXkbH"
+  -H "Content-Type : application/json && Accept : application/vnd.example.v1"
+```
+
+  > Request Json
+
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "id": 12,
+    "name": "Test",
+    "status": "active",
+    "location": "Sydney",
+    "created_at": 1436177479,
+    "updated_at": 1436177479
+}
+
+```
+
+# System
+
+
+## Create System
+
+### HTTP Request
+
+`POST localhost:3000/api/systems.json?auth_token=zSwZQMySVAkk_PncMnp5`
+
+
+```shell
+curl "localhost:3000/api/systems.json?auth_token=zSwZQMySVAkk_PncMnp5"
+  -H "Content-Type : application/json && Accept : application/vnd.example.v1"
+```
+
+  > Request Json
+
+```json
+{
+  "system": {
+    "name": "Test System",
+    "status": "active",
+    "project_id": 4
+  }
+}
+```
+
+
+> The above command returns error if project_id is invalid
+
+
+```json
+{
+    "description": "Couldn't find Project with 'id'=344",
+    "title": "No Record Found"
+}
+
+```
+
+> The above command returns JSON structured like this on success:
+
+```json
+{
+    "project": {
+        "id": 4,
+        "name": "test project",
+        "status": "active",
+        "location": "Sydney",
+        "created_at": 1436345732,
+        "updated_at": 1436345732,
+        "system": {
+            "id": 9,
+            "name": "Test System",
+            "status": "active",
+            "created_at": 1436349683,
+            "updated_at": 1436349683
+        }
+    }
+}
+
+```
+
+## Update System
+
+### HTTP Request
+
+`PUT localhost:3000/api/systems/3.json?auth_token=zSwZQMySVAkk_PncMnp5`
+
+
+```shell
+curl "localhost:3000/api/systems/3.json?auth_token=zSwZQMySVAkk_PncMnp5"
+  -H "Content-Type : application/json && Accept : application/vnd.example.v1"
+```
+
+> Request Json
+
+```json
+{
+  "system": {
+    "name": "Test System",
+    "status": "active",
+    "project_id": 4
+  }
+}
+```
+
+
+> The above command returns error if project_id is invalid
+
+
+```json
+{
+    "description": "Couldn't find Project with 'id'=344",
+    "title": "No Record Found"
+}
+
+```
+
+> The above command returns JSON structured like this on success:
+
+```json
+{
+    "project": {
+        "id": 3,
+        "name": "test project",
+        "status": "active",
+        "location": "Sydney",
+        "created_at": 1436345708,
+        "updated_at": 1436345708,
+        "system": {
+            "id": 4,
+            "name": "test the system 1345",
+            "status": "deactive",
+            "created_at": 1436346669,
+            "updated_at": 1436350057
+        }
+    }
+}
+
+```
+## Show System
+
+### HTTP Request
+
+`GET localhost:3000/api/systems/3.json?auth_token=zSwZQMySVAkk_PncMnp5`
+
+
+```shell
+curl "localhost:3000/api/systems/3.json?auth_token=zSwZQMySVAkk_PncMnp5"
+  -H "Content-Type : application/json && Accept : application/vnd.example.v1"
+```
+
+
+> The above command returns JSON structured like this on success:
+
+```json
+{
+    "project": {
+        "id": 4,
+        "name": "test project",
+        "status": "active",
+        "location": "Sydney",
+        "created_at": 1436345732,
+        "updated_at": 1436345732,
+        "system": {
+            "id": 3,
+            "name": "test the system for project 4",
+            "status": "deactive",
+            "created_at": 1436346644,
+            "updated_at": 1436348924
+        }
+    }
+}
+
+```
+
+## Show Systems of all projects
+
+### HTTP Request
+
+`GET localhost:3000/api/systems.json?auth_token=zSwZQMySVAkk_PncMnp5`
+
+
+```shell
+curl "localhost:3000/api/systems.json?auth_token=zSwZQMySVAkk_PncMnp5"
+  -H "Content-Type : application/json && Accept : application/vnd.example.v1"
+```
+
+
+> The above command returns JSON structured like this on success:
+
+```json
+{
+    "projects": [
+        {
+            "id": 3,
+            "name": "test project",
+            "status": "active",
+            "location": "Sydney",
+            "created_at": 1436345708,
+            "updated_at": 1436345708,
+            "systems": [
+                {
+                    "id": 1,
+                    "name": null,
+                    "status": null,
+                    "created_at": 1436346491,
+                    "updated_at": 1436346491
+                },
+                {
+                    "id": 2,
+                    "name": "test system",
+                    "status": null,
+                    "created_at": 1436346491,
+                    "updated_at": 1436346491
+                },
+                {
+                    "id": 5,
+                    "name": "Name is khan",
+                    "status": "active",
+                    "created_at": 1436346699,
+                    "updated_at": 1436346699
+                },
+                {
+                    "id": 6,
+                    "name": "Name is khan",
+                    "status": "active",
+                    "created_at": 1436346721,
+                    "updated_at": 1436346721
+                },
+                {
+                    "id": 7,
+                    "name": "Name is khan",
+                    "status": "active",
+                    "created_at": 1436346887,
+                    "updated_at": 1436346887
+                },
+                {
+                    "id": 8,
+                    "name": "Name is khan",
+                    "status": "active",
+                    "created_at": 1436347293,
+                    "updated_at": 1436347293
+                },
+                {
+                    "id": 4,
+                    "name": "test the system 1345",
+                    "status": "deactive",
+                    "created_at": 1436346669,
+                    "updated_at": 1436350057
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "name": "test project",
+            "status": "active",
+            "location": "Sydney",
+            "created_at": 1436345732,
+            "updated_at": 1436345732,
+            "systems": [
+                {
+                    "id": 3,
+                    "name": "test the system for project 4",
+                    "status": "deactive",
+                    "created_at": 1436346644,
+                    "updated_at": 1436348924
+                },
+                {
+                    "id": 9,
+                    "name": "Test System",
+                    "status": "active",
+                    "created_at": 1436349683,
+                    "updated_at": 1436349683
+                }
+            ]
+        }
+    ]
+}
+
+```
+# Instruments
+
+
+## Create System
+
+### HTTP Request
+
+`POST localhost:3000/api/instruments.json?auth_token=xq9S8MMzW4FWbGW4XCC4`
+
+
+```shell
+curl "localhost:3000/api/instruments.json?auth_token=xq9S8MMzW4FWbGW4XCC4"
+  -H "Content-Type : application/json && Accept : application/vnd.example.v1"
+```
+
+  > Request Json
+
+```json
+
+ {
+  "instrument": {
+    "description": "this is test instruments",
+    "manufacturer": "guuduu",
+    "serial_number": "12345678",
+    "calibration_date": "2011-05-19 10:30:14"
+  }
+}
+
+```
+
+
+> The above command returns JSON structured like this on success:
+
+```json
+
+{
+    "id": 8,
+    "description": "this is test instruments",
+    "manufacturer": "guuduu",
+    "serial_number": "12345678",
+    "calibration_date": "2011-05-19T15:30:14.000Z",
+    "created_at": 1436870551,
+    "updated_at": 1436870551,
+    "company_name": "Allah buksh",
+    "user_email": "adman1@gmail.com"
+}
+
+```
+
+## Update Instruments
+
+### HTTP Request
+
+`PUT localhost:3000/api/instruments/8.json?auth_token=xq9S8MMzW4FWbGW4XCC4`
+
+
+```shell
+curl "PUT localhost:3000/api/instruments/8.json?auth_token=xq9S8MMzW4FWbGW4XCC4"
+  -H "Content-Type : application/json && Accept : application/vnd.example.v1"
+```
+
+  > Request Json
+
+```json
+
+ {
+  "instrument": {
+    "description": "this is test instruments",
+    "manufacturer": "guuduu",
+    "serial_number": "12345678",
+    "calibration_date": "2011-05-19 10:30:14"
+  }
+}
+
+```
+
+
+> The above command returns JSON structured like this on success:
+
+```json
+
+{
+    "id": 8,
+    "description": "this is test instruments",
+    "manufacturer": "guuduu",
+    "serial_number": "12345678",
+    "calibration_date": "2011-05-19T15:30:14.000Z",
+    "created_at": 1436870551,
+    "updated_at": 1436870551,
+    "company_name": "Allah buksh",
+    "user_email": "adman1@gmail.com"
+}
+
+```
+
+
+## GET Instruments
+
+### HTTP Request
+
+`GET localhost:3000/api/instruments.json?auth_token=xq9S8MMzW4FWbGW4XCC4&timestamp=1436869503`
+
+
+```shell
+curl "GET localhost:3000/api/instruments.json?auth_token=xq9S8MMzW4FWbGW4XCC4&timestamp=1436869503"
+  -H "Content-Type : application/json && Accept : application/vnd.example.v1"
+```
+
+  > Request Json
+
+
+> The above command returns JSON structured like this on success:
+
+```json
+
+{
+    "instruments": [
+        {
+            "id": 5,
+            "description": "this is test instruments 5",
+            "manufacturer": "guuduu",
+            "serial_number": "12345678",
+            "calibration_date": null,
+            "created_at": 1436869503,
+            "updated_at": 1436869503,
+            "company_name": "Allah buksh",
+            "user_email": "adman1@gmail.com"
+        },
+        {
+            "id": 6,
+            "description": "this is test instruments",
+            "manufacturer": "guuduu",
+            "serial_number": "12345678",
+            "calibration_date": null,
+            "created_at": 1436869650,
+            "updated_at": 1436869650,
+            "company_name": "Allah buksh",
+            "user_email": "adman1@gmail.com"
+        },
+        {
+            "id": 7,
+            "description": "this is test instruments",
+            "manufacturer": "guuduu",
+            "serial_number": "12345678",
+            "calibration_date": "2011-05-19T15:30:14.000Z",
+            "created_at": 1436870522,
+            "updated_at": 1436870522,
+            "company_name": "Allah buksh",
+            "user_email": "adman1@gmail.com"
+        },
+        {
+            "id": 8,
+            "description": "this is test instruments updated",
+            "manufacturer": "guuduu",
+            "serial_number": "1222333333",
+            "calibration_date": "2011-05-19T15:30:14.000Z",
+            "created_at": 1436870551,
+            "updated_at": 1436870657,
+            "company_name": "Allah buksh",
+            "user_email": "adman1@gmail.com"
+        }
+    ]
+}
+
+
+```
 
