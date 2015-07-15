@@ -231,6 +231,31 @@ curl "localhost:3000/api/projects/12.json?auth_token=kDKUhhkg_pkEYQhzXkbH"
 }
 
 ```
+### HTTP Request
+
+`DELETE localhost:3000/api/projects/12.json?auth_token=kDKUhhkg_pkEYQhzXkbH`
+
+## Delete Project
+
+`DELETE localhost:3000/api/projects/12.json?auth_token=kDKUhhkg_pkEYQhzXkbH`
+
+```shell
+curl "localhost:3000/api/projects/12.json?auth_token=kDKUhhkg_pkEYQhzXkbH"
+  -H "Content-Type : application/json && Accept : application/vnd.example.v1"
+```
+
+  > Request Json
+
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "id": 12,
+}
+
+```
+
 
 # System
 
@@ -384,6 +409,28 @@ curl "localhost:3000/api/systems/3.json?auth_token=zSwZQMySVAkk_PncMnp5"
             "updated_at": 1436348924
         }
     }
+}
+
+```
+
+## Delete System
+
+### HTTP Request
+
+`Delete localhost:3000/api/systems/3.json?auth_token=zSwZQMySVAkk_PncMnp5`
+
+
+```shell
+curl "localhost:3000/api/systems/3.json?auth_token=zSwZQMySVAkk_PncMnp5"
+  -H "Content-Type : application/json && Accept : application/vnd.example.v1"
+```
+
+
+> The above command returns JSON structured like this on success:
+
+```json
+{
+    "system_id": 16
 }
 
 ```
@@ -588,6 +635,29 @@ curl "PUT localhost:3000/api/instruments/8.json?auth_token=xq9S8MMzW4FWbGW4XCC4"
 
 ```
 
+## Delete Instruments
+
+### HTTP Request
+
+`DELETE localhost:3000/api/instruments/8.json?auth_token=xq9S8MMzW4FWbGW4XCC4`
+
+
+```shell
+curl "DELETE localhost:3000/api/instruments/8.json?auth_token=xq9S8MMzW4FWbGW4XCC4"
+  -H "Content-Type : application/json && Accept : application/vnd.example.v1"
+```
+
+
+> The above command returns JSON structured like this on success:
+
+```json
+
+{
+    "instrument_id": 8
+}
+
+```
+
 
 ## GET Instruments
 
@@ -659,4 +729,48 @@ curl "GET localhost:3000/api/instruments.json?auth_token=xq9S8MMzW4FWbGW4XCC4&ti
 
 
 ```
+
+# Delete Records
+## Get all Dleted records
+
+### HTTP Request
+
+`GET localhost:3000/api/get_delete_record?auth_token=zSwZQMySVAkk_PncMnp5&timestamp=143690000`
+
+
+```shell
+curl "GET localhost:3000/api/get_delete_record?auth_token=zSwZQMySVAkk_PncMnp5&timestamp=143690000"
+  -H "Content-Type : application/json && Accept : application/vnd.example.v1"
+```
+
+> The above command returns JSON structured like this on success:
+
+```json
+
+{
+    "Timestamp": 1436946527.126473,
+    "delete": [
+        {
+            "model_name": "Project",
+            "model_ids": [
+                3,
+                5
+            ]
+        },
+        {
+            "model_name": "System",
+            "model_ids": [
+                10,
+                11,
+                12,
+                13
+            ]
+        }
+    ]
+}
+
+
+```
+
+
 
