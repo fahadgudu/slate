@@ -5,7 +5,7 @@ language_tabs:
   - HTTP Request
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
+  - <a href='#'>API End Point for X Operative Tab</a>
   - <a href='http://github.com/fahadgudu/slate'>Documentation by Fahad</a>
 
 includes:
@@ -22,25 +22,41 @@ Welcome to the X Operative Tab API! You can use our API to access X Operative Ta
 # Authentication
 ## Sign in
 > To authorize, use this URL  :
->  localhost:3000/api/signin
+>  http://52.64.86.66/api/signin
 
-`POST localhost:3000/api/signin`
+`POST http://52.64.86.66/api/signin`
 
 ```shell
-curl "localhost:3000/api/signin"
+curl "http://52.64.86.66/api/signin"
   -H "Content-Type : application/json && Accept : application/vnd.example.v1"
 ```
+> request json
+
+```json
+
+{
+    "email": "fahad@gmail.com",
+    "password": "password"
+}
+
+```
+
+
 > The above command returns JSON structured like this:
 
 ```json
+
 {
-    "email": "hamilton@gmail.com",
-    "authentication_token": "nLKSTVuSKmrxUezuWirF",
-    "created_at": "2015-07-02T07:50:01.168Z",
-    "updated_at": "2015-07-08T05:10:23.770Z",
-    "company_id": 6,
-    "timestamp": 1436332223.777125
+    "email": "fahad@gmail.com",
+    "authentication_token": "S9AGygBL998HKGyCsUCd",
+    "company_name": "Dapper Apps",
+    "role": "Technician",
+    "created_at": 1437023988,
+    "updated_at": 1437024503,
+    "timestamp": 1437024503.990539
 }
+
+
 ```
 
 This endpoint Sign in user to AWS server.
@@ -48,12 +64,32 @@ This endpoint Sign in user to AWS server.
 ## Sign out
 
 > To Logout, use this URL  :
->  localhost:3000/api/signout?auth_token=wCtXRyxhYk7HTdZpM8eC
+>  http://52.64.86.66/api/signout?auth_token=wCtXRyxhYk7HTdZpM8eC
 
-`DELETE localhost:3000/api/signout?auth_token=wCtXRyxhYk7HTdZpM8eC`
+`DELETE http://52.64.86.66/api/signout?auth_token=wCtXRyxhYk7HTdZpM8eC`
+
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+auth_token | true | authentication token of user
+
+<aside class="success">
+Remember — auth token is always unique for all users!
+</aside>
+
+`Headers`
+
+<aside class="notice">
+You must add following headers before any API Call
+<code>`Content-Type : application/json`</code>
+&&
+<code>`Accept : application/vnd.example.v1`</code>
+</aside>
 
 ```shell
-curl "localhost:3000/api/signout?auth_token=wCtXRyxhYk7HTdZpM8eC"
+curl "http://52.64.86.66/api/signout?auth_token=wCtXRyxhYk7HTdZpM8eC"
   -H "Content-Type : application/json && Accept : application/vnd.example.v1"
 ```
 > The above command returns JSON structured like this:
@@ -72,14 +108,35 @@ This endpoint Sign out user to AWS server.
 
 # Projects
 
-### HTTP Request
-
-`POST localhost:3000/api/projects.json?auth_token=kDKUhhkg_pkEYQhzXkbH`
-
 ## Create Project
 
+### HTTP Request
+
+`POST http://52.64.86.66/api/projects.json?auth_token=kDKUhhkg_pkEYQhzXkbH`
+
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+auth_token | true | authentication token of user
+
+<aside class="success">
+Remember — auth token is always unique for all users!
+</aside>
+
+`Headers`
+
+<aside class="notice">
+You must add following headers before any API Call
+<code>`Content-Type : application/json`</code>
+&&
+<code>`Accept : application/vnd.example.v1`</code>
+</aside>
+
+
 ```shell
-curl "localhost:3000/api/projects.json?auth_token=kDKUhhkg_pkEYQhzXkbH"
+curl "http://52.64.86.66/api/projects.json?auth_token=kDKUhhkg_pkEYQhzXkbH"
   -H "Content-Type : application/json && Accept : application/vnd.example.v1"
 ```
 
@@ -108,17 +165,34 @@ curl "localhost:3000/api/projects.json?auth_token=kDKUhhkg_pkEYQhzXkbH"
 }
 
 ```
-
-### HTTP Request
-
-`POST localhost:3000/api/projects.json?auth_token=kDKUhhkg_pkEYQhzXkbH`
-
 ## Update Project
 
-`PUT localhost:3000/api/projects.json?auth_token=kDKUhhkg_pkEYQhzXkbH`
+`PUT http://52.64.86.66/api/projects/<ID>.json?auth_token=kDKUhhkg_pkEYQhzXkbH`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+auth_token | true | authentication token of user
+ID | true | unique id of the record
+
+<aside class="success">
+Remember — auth token is always unique for all users!
+</aside>
+
+`Headers`
+
+<aside class="notice">
+You must add following headers before any API Call
+<code>`Content-Type : application/json`</code>
+&&
+<code>`Accept : application/vnd.example.v1`</code>
+</aside>
+
+
 
 ```shell
-curl "localhost:3000/api/projects.json?auth_token=kDKUhhkg_pkEYQhzXkbH"
+curl "http://52.64.86.66/api/projects/<ID>.json?auth_token=kDKUhhkg_pkEYQhzXkbH"
   -H "Content-Type : application/json && Accept : application/vnd.example.v1"
 ```
 
@@ -150,8 +224,34 @@ curl "localhost:3000/api/projects.json?auth_token=kDKUhhkg_pkEYQhzXkbH"
 ```
 ## Get All the Projects
 
+### HTTP Request
+
+`GET http://52.64.86.66/api/projects.json?auth_token=kDKUhhkg_pkEYQhzXkbH&timestamp=1437025595`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+auth_token | true | authentication token of user
+timestamp | true | time stamp of the users  from Ipad application
+
+<aside class="success">
+Remember — auth token is always unique for all users!
+</aside>
+
+`Headers`
+
+<aside class="notice">
+You must add following headers before any API Call
+<code>`Content-Type : application/json`</code>
+&&
+<code>`Accept : application/vnd.example.v1`</code>
+</aside>
+
+
+
 ```shell
-curl "localhost:3000/api/projects.json?auth_token=kDKUhhkg_pkEYQhzXkbH"
+curl "http://52.64.86.66/api/projects.json?auth_token=kDKUhhkg_pkEYQhzXkbH"
   -H "Content-Type : application/json && Accept : application/vnd.example.v1"
 ```
 
@@ -197,21 +297,34 @@ curl "localhost:3000/api/projects.json?auth_token=kDKUhhkg_pkEYQhzXkbH"
 ]
 ```
 
-### HTTP Request
 
-`GET localhost:3000/api/projects/11.json?auth_token=kDKUhhkg_pkEYQhzXkbH`
+## Show Project
 
+`GET http://52.64.86.66/api/projects/<ID>.json?auth_token=kDKUhhkg_pkEYQhzXkbH`
 
-### HTTP Request
+### Query Parameters
 
-`GET localhost:3000/api/projects/12.json?auth_token=kDKUhhkg_pkEYQhzXkbH`
+Parameter | Default | Description
+--------- | ------- | -----------
+auth_token | true | authentication token of user
+ID | true | unique id of the record
 
-## Update Project
+<aside class="success">
+Remember — auth token is always unique for all users!
+</aside>
 
-`GET localhost:3000/api/projects/12.json?auth_token=kDKUhhkg_pkEYQhzXkbH`
+`Headers`
+
+<aside class="notice">
+You must add following headers before any API Call
+<code>`Content-Type : application/json`</code>
+&&
+<code>`Accept : application/vnd.example.v1`</code>
+</aside>
+
 
 ```shell
-curl "localhost:3000/api/projects/12.json?auth_token=kDKUhhkg_pkEYQhzXkbH"
+curl "http://52.64.86.66/api/projects/<ID>.json?auth_token=kDKUhhkg_pkEYQhzXkbH"
   -H "Content-Type : application/json && Accept : application/vnd.example.v1"
 ```
 
@@ -231,21 +344,40 @@ curl "localhost:3000/api/projects/12.json?auth_token=kDKUhhkg_pkEYQhzXkbH"
 }
 
 ```
-### HTTP Request
-
-`DELETE localhost:3000/api/projects/12.json?auth_token=kDKUhhkg_pkEYQhzXkbH`
-
 ## Delete Project
 
-`DELETE localhost:3000/api/projects/12.json?auth_token=kDKUhhkg_pkEYQhzXkbH`
+`DELETE http://52.64.86.66/api/projects/<ID>.json?auth_token=kDKUhhkg_pkEYQhzXkbH`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+auth_token | true | authentication token of user
+ID | true | unique id of the record
+
+
+<aside class="warning">
+    This api is only accessible to company admin
+</aside>
+
+<aside class="success">
+Remember — auth token is always unique for all users!
+</aside>
+
+`Headers`
+
+<aside class="notice">
+You must add following headers before any API Call
+<code>`Content-Type : application/json`</code>
+&&
+<code>`Accept : application/vnd.example.v1`</code>
+</aside>
+
 
 ```shell
-curl "localhost:3000/api/projects/12.json?auth_token=kDKUhhkg_pkEYQhzXkbH"
+curl "http://52.64.86.66/api/projects/<ID>.json?auth_token=kDKUhhkg_pkEYQhzXkbH"
   -H "Content-Type : application/json && Accept : application/vnd.example.v1"
 ```
-
-  > Request Json
-
 
 > The above command returns JSON structured like this:
 
@@ -259,16 +391,34 @@ curl "localhost:3000/api/projects/12.json?auth_token=kDKUhhkg_pkEYQhzXkbH"
 
 # System
 
-
 ## Create System
 
 ### HTTP Request
 
-`POST localhost:3000/api/systems.json?auth_token=zSwZQMySVAkk_PncMnp5`
+`POST http://52.64.86.66/api/systems.json?auth_token=zSwZQMySVAkk_PncMnp5`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+auth_token | true | authentication token of user
+
+<aside class="success">
+Remember — auth token is always unique for all users!
+</aside>
+
+`Headers`
+
+<aside class="notice">
+You must add following headers before any API Call
+<code>`Content-Type : application/json`</code>
+&&
+<code>`Accept : application/vnd.example.v1`</code>
+</aside>
 
 
 ```shell
-curl "localhost:3000/api/systems.json?auth_token=zSwZQMySVAkk_PncMnp5"
+curl "http://52.64.86.66/api/systems.json?auth_token=zSwZQMySVAkk_PncMnp5"
   -H "Content-Type : application/json && Accept : application/vnd.example.v1"
 ```
 
@@ -323,11 +473,32 @@ curl "localhost:3000/api/systems.json?auth_token=zSwZQMySVAkk_PncMnp5"
 
 ### HTTP Request
 
-`PUT localhost:3000/api/systems/3.json?auth_token=zSwZQMySVAkk_PncMnp5`
+`PUT http://52.64.86.66/api/systems/<ID>.json?auth_token=zSwZQMySVAkk_PncMnp5`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+auth_token | true | authentication token of user
+ID | true | unique id of the record
+
+<aside class="success">
+Remember — auth token is always unique for all users!
+</aside>
+
+`Headers`
+
+<aside class="notice">
+You must add following headers before any API Call
+<code>`Content-Type : application/json`</code>
+&&
+<code>`Accept : application/vnd.example.v1`</code>
+</aside>
+
 
 
 ```shell
-curl "localhost:3000/api/systems/3.json?auth_token=zSwZQMySVAkk_PncMnp5"
+curl "http://52.64.86.66/api/systems/<ID>.json?auth_token=zSwZQMySVAkk_PncMnp5"
   -H "Content-Type : application/json && Accept : application/vnd.example.v1"
 ```
 
@@ -381,11 +552,31 @@ curl "localhost:3000/api/systems/3.json?auth_token=zSwZQMySVAkk_PncMnp5"
 
 ### HTTP Request
 
-`GET localhost:3000/api/systems/3.json?auth_token=zSwZQMySVAkk_PncMnp5`
+`GET http://52.64.86.66/api/systems/<ID>.json?auth_token=zSwZQMySVAkk_PncMnp5`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+auth_token | true | authentication token of user
+ID | true | unique id of the record
+
+<aside class="success">
+Remember — auth token is always unique for all users!
+</aside>
+
+`Headers`
+
+<aside class="notice">
+You must add following headers before any API Call
+<code>`Content-Type : application/json`</code>
+&&
+<code>`Accept : application/vnd.example.v1`</code>
+</aside>
 
 
 ```shell
-curl "localhost:3000/api/systems/3.json?auth_token=zSwZQMySVAkk_PncMnp5"
+curl "http://52.64.86.66/api/systems/<ID>.json?auth_token=zSwZQMySVAkk_PncMnp5"
   -H "Content-Type : application/json && Accept : application/vnd.example.v1"
 ```
 
@@ -417,11 +608,36 @@ curl "localhost:3000/api/systems/3.json?auth_token=zSwZQMySVAkk_PncMnp5"
 
 ### HTTP Request
 
-`Delete localhost:3000/api/systems/3.json?auth_token=zSwZQMySVAkk_PncMnp5`
+`Delete http://52.64.86.66/api/systems/<ID>.json?auth_token=zSwZQMySVAkk_PncMnp5`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+auth_token | true | authentication token of user
+ID | true | unique id of the record
+
+
+<aside class="warning">
+    This api is only accessible to company admin
+</aside>
+
+<aside class="success">
+Remember — auth token is always unique for all users!
+</aside>
+
+`Headers`
+
+<aside class="notice">
+You must add following headers before any API Call
+<code>`Content-Type : application/json`</code>
+&&
+<code>`Accept : application/vnd.example.v1`</code>
+</aside>
 
 
 ```shell
-curl "localhost:3000/api/systems/3.json?auth_token=zSwZQMySVAkk_PncMnp5"
+curl "http://52.64.86.66/api/systems/<ID>.json?auth_token=zSwZQMySVAkk_PncMnp5"
   -H "Content-Type : application/json && Accept : application/vnd.example.v1"
 ```
 
@@ -439,11 +655,32 @@ curl "localhost:3000/api/systems/3.json?auth_token=zSwZQMySVAkk_PncMnp5"
 
 ### HTTP Request
 
-`GET localhost:3000/api/systems.json?auth_token=zSwZQMySVAkk_PncMnp5`
+`GET http://52.64.86.66/api/systems.json?auth_token=zSwZQMySVAkk_PncMnp5&timestamp=12345`
+
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+auth_token | true | authentication token of user
+timestamp | true | time stamp of the users  from Ipad application
+
+<aside class="success">
+Remember — auth token is always unique for all users!
+</aside>
+
+`Headers`
+
+<aside class="notice">
+You must add following headers before any API Call
+<code>`Content-Type : application/json`</code>
+&&
+<code>`Accept : application/vnd.example.v1`</code>
+</aside>
 
 
 ```shell
-curl "localhost:3000/api/systems.json?auth_token=zSwZQMySVAkk_PncMnp5"
+curl "http://52.64.86.66/api/systems.json?auth_token=zSwZQMySVAkk_PncMnp5"
   -H "Content-Type : application/json && Accept : application/vnd.example.v1"
 ```
 
@@ -547,11 +784,30 @@ curl "localhost:3000/api/systems.json?auth_token=zSwZQMySVAkk_PncMnp5"
 
 ### HTTP Request
 
-`POST localhost:3000/api/instruments.json?auth_token=xq9S8MMzW4FWbGW4XCC4`
+`POST http://52.64.86.66/api/instruments.json?auth_token=xq9S8MMzW4FWbGW4XCC4`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+auth_token | true | authentication token of user
+
+<aside class="success">
+Remember — auth token is always unique for all users!
+</aside>
+
+`Headers`
+
+<aside class="notice">
+You must add following headers before any API Call
+<code>`Content-Type : application/json`</code>
+&&
+<code>`Accept : application/vnd.example.v1`</code>
+</aside>
 
 
 ```shell
-curl "localhost:3000/api/instruments.json?auth_token=xq9S8MMzW4FWbGW4XCC4"
+curl "http://52.64.86.66/api/instruments.json?auth_token=xq9S8MMzW4FWbGW4XCC4"
   -H "Content-Type : application/json && Accept : application/vnd.example.v1"
 ```
 
@@ -574,30 +830,49 @@ curl "localhost:3000/api/instruments.json?auth_token=xq9S8MMzW4FWbGW4XCC4"
 > The above command returns JSON structured like this on success:
 
 ```json
-
 {
-    "id": 8,
+    "id": 1,
     "description": "this is test instruments",
     "manufacturer": "guuduu",
     "serial_number": "12345678",
     "calibration_date": "2011-05-19T15:30:14.000Z",
-    "created_at": 1436870551,
-    "updated_at": 1436870551,
-    "company_name": "Allah buksh",
-    "user_email": "adman1@gmail.com"
+    "created_at": 1437028030,
+    "updated_at": 1437028030,
+    "company_name": "Dapper Apps",
+    "user_email": "zahid@gmail.com"
 }
-
 ```
 
 ## Update Instruments
 
 ### HTTP Request
 
-`PUT localhost:3000/api/instruments/8.json?auth_token=xq9S8MMzW4FWbGW4XCC4`
+`PUT http://52.64.86.66/api/instruments/<ID>.json?auth_token=xq9S8MMzW4FWbGW4XCC4`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+auth_token | true | authentication token of user
+ID | true | unique id of the record
+
+
+<aside class="success">
+Remember — auth token is always unique for all users!
+</aside>
+
+`Headers`
+
+<aside class="notice">
+You must add following headers before any API Call
+<code>`Content-Type : application/json`</code>
+&&
+<code>`Accept : application/vnd.example.v1`</code>
+</aside>
 
 
 ```shell
-curl "PUT localhost:3000/api/instruments/8.json?auth_token=xq9S8MMzW4FWbGW4XCC4"
+curl "PUT http://52.64.86.66/api/instruments/<ID>.json?auth_token=xq9S8MMzW4FWbGW4XCC4"
   -H "Content-Type : application/json && Accept : application/vnd.example.v1"
 ```
 
@@ -639,11 +914,36 @@ curl "PUT localhost:3000/api/instruments/8.json?auth_token=xq9S8MMzW4FWbGW4XCC4"
 
 ### HTTP Request
 
-`DELETE localhost:3000/api/instruments/8.json?auth_token=xq9S8MMzW4FWbGW4XCC4`
+`DELETE http://52.64.86.66/api/instruments/<ID>.json?auth_token=xq9S8MMzW4FWbGW4XCC4`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+auth_token | true | authentication token of user
+ID | true | unique id of the record
+
+
+<aside class="warning">
+    This api is only accessible to company admin
+</aside>
+
+<aside class="success">
+Remember — auth token is always unique for all users!
+</aside>
+
+`Headers`
+
+<aside class="notice">
+You must add following headers before any API Call
+<code>`Content-Type : application/json`</code>
+&&
+<code>`Accept : application/vnd.example.v1`</code>
+</aside>
 
 
 ```shell
-curl "DELETE localhost:3000/api/instruments/8.json?auth_token=xq9S8MMzW4FWbGW4XCC4"
+curl "DELETE http://52.64.86.66/api/instruments/<ID>.json?auth_token=xq9S8MMzW4FWbGW4XCC4"
   -H "Content-Type : application/json && Accept : application/vnd.example.v1"
 ```
 
@@ -658,16 +958,36 @@ curl "DELETE localhost:3000/api/instruments/8.json?auth_token=xq9S8MMzW4FWbGW4XC
 
 ```
 
-
 ## GET Instruments
 
 ### HTTP Request
 
-`GET localhost:3000/api/instruments.json?auth_token=xq9S8MMzW4FWbGW4XCC4&timestamp=1436869503`
+`GET http://52.64.86.66/api/instruments.json?auth_token=xq9S8MMzW4FWbGW4XCC4&timestamp=1436869503`
+
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+auth_token | true | authentication token of user
+timestamp | true | time stamp of the users  from Ipad application
+
+<aside class="success">
+Remember — auth token is always unique for all users!
+</aside>
+
+`Headers`
+
+<aside class="notice">
+You must add following headers before any API Call
+<code>`Content-Type : application/json`</code>
+&&
+<code>`Accept : application/vnd.example.v1`</code>
+</aside>
 
 
 ```shell
-curl "GET localhost:3000/api/instruments.json?auth_token=xq9S8MMzW4FWbGW4XCC4&timestamp=1436869503"
+curl "GET http://52.64.86.66/api/instruments.json?auth_token=xq9S8MMzW4FWbGW4XCC4&timestamp=1436869503"
   -H "Content-Type : application/json && Accept : application/vnd.example.v1"
 ```
 
@@ -731,15 +1051,37 @@ curl "GET localhost:3000/api/instruments.json?auth_token=xq9S8MMzW4FWbGW4XCC4&ti
 ```
 
 # Delete Records
+
 ## Get all Dleted records
 
 ### HTTP Request
 
-`GET localhost:3000/api/get_delete_record?auth_token=zSwZQMySVAkk_PncMnp5&timestamp=143690000`
+`GET http://52.64.86.66/api/get_delete_record?auth_token=zSwZQMySVAkk_PncMnp5&timestamp=143690000`
+
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+auth_token | true | authentication token of user
+timestamp | true | time stamp of the users  from Ipad application
+
+<aside class="success">
+Remember — auth token is always unique for all users!
+</aside>
+
+`Headers`
+
+<aside class="notice">
+You must add following headers before any API Call
+<code>`Content-Type : application/json`</code>
+&&
+<code>`Accept : application/vnd.example.v1`</code>
+</aside>
 
 
 ```shell
-curl "GET localhost:3000/api/get_delete_record?auth_token=zSwZQMySVAkk_PncMnp5&timestamp=143690000"
+curl "GET http://52.64.86.66/api/get_delete_record?auth_token=zSwZQMySVAkk_PncMnp5&timestamp=143690000"
   -H "Content-Type : application/json && Accept : application/vnd.example.v1"
 ```
 
